@@ -1,3 +1,4 @@
+# 可以对1.txt中的ip进行ping操作
 import os
 import subprocess
 
@@ -21,7 +22,7 @@ def ping_ip(ip):
 
 
 def main():
-    ip_file = 'SH.txt'
+    ip_file = '1.txt'
 
     # 读取 IP 地址
     if not os.path.exists(ip_file):
