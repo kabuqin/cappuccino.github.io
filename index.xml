@@ -24,7 +24,7 @@
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get update
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2、执行安装命令，等待程序自动完成安装：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get install openvpn
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://kabuqin.github.io/cappuccino.github.io/images/image-20260126210915286.png"&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://kabuqin.github.io/cappuccino.github.io/images/82265d901bbcd7b2b1850d3365ef2015.jpeg"&gt;&lt;/p&gt;
 &lt;p&gt;安装过程中如果出现确认提示，输入 y 并回车即可。&lt;/p&gt;
 &lt;h2 id="二获取-openvpn-配置文件"&gt;二、获取 OpenVPN 配置文件&lt;/h2&gt;
 &lt;p&gt;1、点击viewconnection
