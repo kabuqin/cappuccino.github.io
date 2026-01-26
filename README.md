@@ -1,1 +1,1 @@
-https://kabuqin.github.io/cappuccino.github.io/posts/
+https://kabuqin.github.io/cappuccino.github.io
