@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install openvpn
 ```
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c68f8811f892456ab545ba425c9f95c9.png)
+![在这里插入图片描述](/images/image-20260126210915286)
 
 安装过程中如果出现确认提示，输入 y 并回车即可。
 
@@ -34,7 +34,7 @@ sudo apt-get install openvpn
 openvpn --config starting_points_eu-starting-point-1-dhcp\(1\).ovpn 
 ```
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a2d1bc487c3f49558ee89164508b70f3.png)
+![在这里插入图片描述](C:\Users\11481\AppData\Roaming\Typora\typora-user-images\image-20260126211002677.png)
 2、输入ip addr show tun0 验证连接是否生效
 
 ```bash
@@ -42,3 +42,4 @@ ip addr show tun0
 ```
 
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/3e7ac5e5470044fab27a2562d0d4e599.png)
+
