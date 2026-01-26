@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install openvpn
 ```
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c68f8811f892456ab545ba425c9f95c9.png)
+![在这里插入图片描述](/images/image-20260126210915286.png)
 
 安装过程中如果出现确认提示，输入 y 并回车即可。
 
