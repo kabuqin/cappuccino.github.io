@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Posts on 卡布奇诺的技术笔记</title>
-    <link>http://localhost:1313/cappuccino.github.io/posts/</link>
-    <description>Recent content in Posts on 卡布奇诺的技术笔记</description>
-    <generator>Hugo -- 0.154.5</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Mon, 26 Jan 2026 17:55:43 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/cappuccino.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Openvpn Htb Guide</title>
-      <link>http://localhost:1313/cappuccino.github.io/posts/openvpn-htb-guide/</link>
-      <pubDate>Mon, 26 Jan 2026 17:55:43 +0800</pubDate>
-      <guid>http://localhost:1313/cappuccino.github.io/posts/openvpn-htb-guide/</guid>
-      <description>&lt;p&gt;&amp;mdash; title: &amp;ldquo;OpenVPN 连接 HTB 靶场实战：避坑指南&amp;rdquo; date: 2026-01-26T10:00:00+08:00 draft: false &amp;mdash; 这里粘贴你的内容&amp;hellip;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/</link><description>Recent content in Posts on 卡布奇诺的技术笔记</description><generator>Hugo -- 0.154.5</generator><language>zh-cn</language><atom:link href="https://kabuqin.github.io/cappuccino.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</guid><description>&lt;p&gt;&lt;strong&gt;Kali Linux 作为渗透测试专用系统，默认软件源里就包含 OpenVPN，我们直接通过命令行安装即可。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="一安装openvpn"&gt;一、安装openvpn&lt;/h2&gt;
+&lt;p&gt;1、打开 Kali 终端，先更新软件包索引，确保能获取到最新的安装包&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2、执行安装命令，等待程序自动完成安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get install openvpn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/c68f8811f892456ab545ba425c9f95c9.png"&gt;&lt;/p&gt;
+&lt;p&gt;安装过程中如果出现确认提示，输入 y 并回车即可。&lt;/p&gt;
+&lt;h2 id="二获取-openvpn-配置文件"&gt;二、获取 OpenVPN 配置文件&lt;/h2&gt;
+&lt;p&gt;1、点击viewconnection
+&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/fa47b06edac44d679874dfdd5ed2925b.png"&gt;
+2、我一般选择tcp443,点击download
+&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/4e0450ec2166453d886da4e5db5d70fe.png"&gt;&lt;/p&gt;
+&lt;h2 id="三连接openvpn"&gt;三、连接OPENVPN&lt;/h2&gt;
+&lt;p&gt;1、输入openvpn &amp;ndash;config + vpn文件路径
+如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openvpn --config starting_points_eu-starting-point-1-dhcp&lt;span style="color:#ae81ff"&gt;\(&lt;/span&gt;1&lt;span style="color:#ae81ff"&gt;\)&lt;/span&gt;.ovpn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/a2d1bc487c3f49558ee89164508b70f3.png"&gt;
+2、输入ip addr show tun0 验证连接是否生效&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr show tun0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/3e7ac5e5470044fab27a2562d0d4e599.png"&gt;&lt;/p&gt;</description></item></channel></rss>
