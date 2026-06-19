@@ -1,22 +1,41 @@
 baseURL = 'https://kabuqin.github.io/cappuccino.github.io/'
 languageCode = 'zh-cn'
 title = '卡布奇诺的技术笔记'
-theme = 'PaperMod'
+theme = 'terminal'
+pagination.pagerSize = 10
+
+[markup.goldmark.renderer]
+  unsafe = true
 
 [params]
-    env = "production"
-    title = "卡布奇诺的技术笔记"
-    description = "关于OSCP、内网渗透与生活的碎片"
-    author = { name = "卡布奇诺" }
-    # 自动根据 Git 提交时间识别日期
+    contentTypeName = "posts"
+    showMenuItems = 5
+    fullWidthTheme = false
+    centerTheme = true
     enableGitInfo = true
 
-[menu]
-    [[menu.main]]
+[languages]
+  [languages.zh-cn]
+    title = "卡布奇诺的技术笔记"
+    copyright = "© 2026 卡布奇诺"
+    [languages.zh-cn.params]
+      subtitle = "关于 OSCP、内网渗透与生活的碎片"
+      keywords = "渗透测试, OSCP, 漏洞复现, 安全研究"
+      menuMore = "更多"
+      readMore = "阅读全文"
+      readOtherPosts = "其他文章"
+      [[languages.zh-cn.params.logo]]
+        logoText = "卡布奇诺 >_"
+        logoHomeLink = "/cappuccino.github.io/"
+
+    [languages.zh-cn.menu]
+      [[languages.zh-cn.menu.main]]
+        identifier = "home"
         name = "首页"
         url = "/"
         weight = 10
-    [[menu.main]]
+      [[languages.zh-cn.menu.main]]
+        identifier = "posts"
         name = "文章"
-        url = "posts"
+        url = "/posts"
         weight = 20
