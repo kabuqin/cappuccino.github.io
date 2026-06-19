@@ -16,6 +16,8 @@ enableGitInfo = true
   footer = "卡布奇诺"
   metaKeywords = ["渗透测试", "OSCP", "漏洞复现", "安全研究", "内网渗透"]
   showBackToTopButton = true
+  showPostsOnHomePage = "recent"
+  numberPostsOnHomePage = 5
 
   socialIcons = [
     {name = "github", url = "https://github.com/kabuqin"},

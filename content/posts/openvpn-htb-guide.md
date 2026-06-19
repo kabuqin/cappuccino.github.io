@@ -1,6 +1,7 @@
 ---
 title: "Kali Linux 安装 OpenVPN 连接 HackTheBox"
 draft: false
+type: post
 tags: ["HackTheBox", "OpenVPN", "Kali"]
 ---
 
