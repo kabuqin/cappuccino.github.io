@@ -1,59 +1,62 @@
 baseURL = "https://kabuqin.github.io/cappuccino.github.io/"
-title = "卡布奇诺的技术笔记"
-theme = "hugo-coder"
-languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 enableEmoji = true
+enableRobotsTXT = true
+languageCode = "zh-cn"
+pygmentsStyle = "monokai"
+theme = "gokarna"
+title = "卡布奇诺的技术笔记"
 enableGitInfo = true
 
-[pagination]
-  pagerSize = 10
+[params]
+  avatarURL = "/images/avatar.webp"
+  avatarSize = "size-m"
+  avatarAltText = "avatar"
+  description = "关于 OSCP、内网渗透与生活的碎片"
+  footer = "卡布奇诺"
+  metaKeywords = ["渗透测试", "OSCP", "漏洞复现", "安全研究", "内网渗透"]
+  showBackToTopButton = true
+
+  socialIcons = [
+    {name = "github", url = "https://github.com/kabuqin"},
+  ]
+
+[menu]
+  [[menu.main]]
+    name = "首页"
+    pre = "<span data-feather='home'></span>"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "文章"
+    pre = "<span data-feather='book'></span>"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    name = "标签"
+    pre = "<span data-feather='tag'></span>"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "github"
+    pre = "<span data-feather='github'></span>"
+    url = "https://github.com/kabuqin"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "rss"
+    pre = "<span data-feather='rss'></span>"
+    url = "/index.xml"
+    weight = 5
 
 [markup]
-  [markup.highlight]
-    noClasses = false
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 4
+    ordered = false
 
-[params]
-  author = "卡布奇诺"
-  description = "关于 OSCP、内网渗透与生活的碎片"
-  keywords = "渗透测试,OSCP,漏洞复现,安全研究,内网渗透"
-  info = ["安全研究员", "OSCP", "渗透测试"]
-  dateFormat = "2006-01-02"
-  colorScheme = "dark"
-  hideColorSchemeToggle = false
-
-[taxonomies]
-  category = "categories"
-  series = "series"
-  tag = "tags"
-  author = "authors"
-
-[[params.social]]
-  name = "Github"
-  icon = "fa-brands fa-github fa-2x"
-  weight = 1
-  url = "https://github.com/kabuqin/"
-
-[[params.social]]
-  name = "RSS"
-  icon = "fa-solid fa-rss fa-2x"
-  weight = 2
-  url = "https://kabuqin.github.io/cappuccino.github.io/index.xml"
-  rel = "alternate"
-  type = "application/rss+xml"
-
-[languages.zh-cn]
-  languageName = ":cn:"
-
-  [[languages.zh-cn.menu.main]]
-    name = "关于"
-    weight = 1
-    url = "about/"
-
-  [[languages.zh-cn.menu.main]]
-    name = "文章"
-    weight = 2
-    url = "posts/"
+[minify]
+  minifyOutput = true

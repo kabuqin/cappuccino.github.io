@@ -11,7 +11,7 @@
 ## 🛠 技术栈
 
 - 框架：[Hugo](https://gohugo.io/)
-- 主题：[hugo-coder](https://github.com/luizdepra/hugo-coder)
+- 主题：[Gokarna](https://github.com/gokarna-theme/gokarna-hugo)
 - 部署：GitHub Pages + GitHub Actions
 
 ## 📂 目录结构
