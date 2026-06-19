@@ -1,3 +1,9 @@
+---
+title: "Kali Linux 安装 OpenVPN 连接 HackTheBox"
+draft: false
+tags: ["HackTheBox", "OpenVPN", "Kali"]
+---
+
 **Kali Linux 作为渗透测试专用系统，默认软件源里就包含 OpenVPN，我们直接通过命令行安装即可。**
 
 ## 一、安装openvpn
