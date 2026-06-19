@@ -7,6 +7,7 @@ theme = 'PaperMod'
     env = "production"
     title = "卡布奇诺的技术笔记"
     description = "关于OSCP、内网渗透与生活的碎片"
+    author = { name = "卡布奇诺" }
     # 自动根据 Git 提交时间识别日期
     enableGitInfo = true
 
