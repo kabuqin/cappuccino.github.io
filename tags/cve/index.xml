@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/</link><description>Recent content in Posts on 卡布奇诺的技术笔记</description><generator>Hugo -- 0.163.3</generator><language>zh-cn</language><atom:link href="https://kabuqin.github.io/cappuccino.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>CVE-2026-20841：Windows 记事本高危远程代码执行漏洞</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</guid><description>&lt;p&gt;&lt;strong&gt;CVE-2026-20841 漏洞详细介绍：Windows 记事本高危远程代码执行漏洞&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>CVE on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/tags/cve/</link><description>Recent content in CVE on 卡布奇诺的技术笔记</description><generator>Hugo -- 0.163.3</generator><language>zh-cn</language><atom:link href="https://kabuqin.github.io/cappuccino.github.io/tags/cve/index.xml" rel="self" type="application/rss+xml"/><item><title>CVE-2026-20841：Windows 记事本高危远程代码执行漏洞</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</guid><description>&lt;p&gt;&lt;strong&gt;CVE-2026-20841 漏洞详细介绍：Windows 记事本高危远程代码执行漏洞&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一、漏洞概述&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;CVE-2026-20841 是一个由微软在2026年2月“补丁星期二”更新中正式修复的高危远程代码执行（Remote Code Execution, RCE）漏洞，影响广泛使用的 Windows 记事本（Notepad）应用。该漏洞编号为 CVE-2026-20841，CVSS v3.1 基础评分为 &lt;strong&gt;8.8&lt;/strong&gt;，属于高危等级，微软将其严重性评定为“Important”（重要）。尽管目前尚未发现野外利用的案例，但其攻击路径简单、利用门槛低，一旦被恶意利用，可能导致用户系统被完全控制，构成严重安全威胁。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;二、漏洞成因与技术原理&lt;/strong&gt;&lt;/p&gt;
@@ -239,24 +239,4 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;安全提示（CVE-2026-24061）：&lt;/strong&gt;
 近期，GNU InetUtils 的 &lt;code&gt;telnetd&lt;/code&gt; 服务组件（版本 1.9.3 至 2.7）被发现存在重大远程认证绕过漏洞。攻击者可利用该漏洞在未授权的情况下获取服务器 root 权限，影响包括 Debian 12 和 Ubuntu 24.04 等主流发行版，建议及时更新。&lt;/p&gt;
-&lt;p&gt;GNU InetUtils 1.9.3 至 2.7 版本的 telnetd 服务器存在远程认证绕过漏洞（CVE-2026-24061）。telnetd 服务器在将 USER 环境变量传递给 &lt;code&gt;login(1)&lt;/code&gt; 程序之前未进行过滤。攻击者可以提供类似 &lt;code&gt;-froot&lt;/code&gt; 的 USER 值来触发 login 程序的认证绕过功能（&lt;code&gt;-f&lt;/code&gt; 参数），无需凭据即可获得 root 访问权限。&lt;/p&gt;</description></item><item><title>Kali Linux 安装 OpenVPN 连接 HackTheBox</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</guid><description>&lt;p&gt;&lt;strong&gt;Kali Linux 作为渗透测试专用系统，默认软件源里就包含 OpenVPN，我们直接通过命令行安装即可。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="一安装openvpn"&gt;一、安装openvpn&lt;/h2&gt;
-&lt;p&gt;1、打开 Kali 终端，先更新软件包索引，确保能获取到最新的安装包&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2、执行安装命令，等待程序自动完成安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get install openvpn
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://kabuqin.github.io/cappuccino.github.io/images/82265d901bbcd7b2b1850d3365ef2015.jpeg"&gt;&lt;/p&gt;
-&lt;p&gt;安装过程中如果出现确认提示，输入 y 并回车即可。&lt;/p&gt;
-&lt;h2 id="二获取-openvpn-配置文件"&gt;二、获取 OpenVPN 配置文件&lt;/h2&gt;
-&lt;p&gt;1、点击viewconnection
-&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/fa47b06edac44d679874dfdd5ed2925b.png"&gt;
-2、我一般选择tcp443,点击download
-&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/4e0450ec2166453d886da4e5db5d70fe.png"&gt;&lt;/p&gt;
-&lt;h2 id="三连接openvpn"&gt;三、连接OPENVPN&lt;/h2&gt;
-&lt;p&gt;1、输入openvpn &amp;ndash;config + vpn文件路径
-如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openvpn --config starting_points_eu-starting-point-1-dhcp&lt;span style="color:#ae81ff"&gt;\(&lt;/span&gt;1&lt;span style="color:#ae81ff"&gt;\)&lt;/span&gt;.ovpn
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/a2d1bc487c3f49558ee89164508b70f3.png"&gt;
-2、输入ip addr show tun0 验证连接是否生效&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr show tun0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img alt="在这里插入图片描述" loading="lazy" src="https://i-blog.csdnimg.cn/direct/3e7ac5e5470044fab27a2562d0d4e599.png"&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;GNU InetUtils 1.9.3 至 2.7 版本的 telnetd 服务器存在远程认证绕过漏洞（CVE-2026-24061）。telnetd 服务器在将 USER 环境变量传递给 &lt;code&gt;login(1)&lt;/code&gt; 程序之前未进行过滤。攻击者可以提供类似 &lt;code&gt;-froot&lt;/code&gt; 的 USER 值来触发 login 程序的认证绕过功能（&lt;code&gt;-f&lt;/code&gt; 参数），无需凭据即可获得 root 访问权限。&lt;/p&gt;</description></item></channel></rss>
