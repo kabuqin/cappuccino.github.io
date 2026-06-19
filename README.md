@@ -11,7 +11,7 @@
 ## 🛠 技术栈
 
 - 框架：[Hugo](https://gohugo.io/)
-- 主题：[Terminal](https://github.com/panr/hugo-theme-terminal)
+- 主题：[hugo-coder](https://github.com/luizdepra/hugo-coder)
 - 部署：GitHub Pages + GitHub Actions
 
 ## 📂 目录结构

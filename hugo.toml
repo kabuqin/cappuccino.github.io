@@ -1,41 +1,59 @@
-baseURL = 'https://kabuqin.github.io/cappuccino.github.io/'
-languageCode = 'zh-cn'
-title = '卡布奇诺的技术笔记'
-theme = 'terminal'
-pagination.pagerSize = 10
+baseURL = "https://kabuqin.github.io/cappuccino.github.io/"
+title = "卡布奇诺的技术笔记"
+theme = "hugo-coder"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
+enableEmoji = true
+enableGitInfo = true
 
-[markup.goldmark.renderer]
-  unsafe = true
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [params]
-    contentTypeName = "posts"
-    showMenuItems = 5
-    fullWidthTheme = false
-    centerTheme = true
-    enableGitInfo = true
+  author = "卡布奇诺"
+  description = "关于 OSCP、内网渗透与生活的碎片"
+  keywords = "渗透测试,OSCP,漏洞复现,安全研究,内网渗透"
+  info = ["安全研究员", "OSCP", "渗透测试"]
+  dateFormat = "2006-01-02"
+  colorScheme = "dark"
+  hideColorSchemeToggle = false
 
-[languages]
-  [languages.zh-cn]
-    title = "卡布奇诺的技术笔记"
-    copyright = "© 2026 卡布奇诺"
-    [languages.zh-cn.params]
-      subtitle = "关于 OSCP、内网渗透与生活的碎片"
-      keywords = "渗透测试, OSCP, 漏洞复现, 安全研究"
-      menuMore = "更多"
-      readMore = "阅读全文"
-      readOtherPosts = "其他文章"
-      [[languages.zh-cn.params.logo]]
-        logoText = "卡布奇诺 >_"
-        logoHomeLink = "/cappuccino.github.io/"
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
 
-    [languages.zh-cn.menu]
-      [[languages.zh-cn.menu.main]]
-        identifier = "home"
-        name = "首页"
-        url = "/"
-        weight = 10
-      [[languages.zh-cn.menu.main]]
-        identifier = "posts"
-        name = "文章"
-        url = "/posts"
-        weight = 20
+[[params.social]]
+  name = "Github"
+  icon = "fa-brands fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/kabuqin/"
+
+[[params.social]]
+  name = "RSS"
+  icon = "fa-solid fa-rss fa-2x"
+  weight = 2
+  url = "https://kabuqin.github.io/cappuccino.github.io/index.xml"
+  rel = "alternate"
+  type = "application/rss+xml"
+
+[languages.zh-cn]
+  languageName = ":cn:"
+
+  [[languages.zh-cn.menu.main]]
+    name = "关于"
+    weight = 1
+    url = "about/"
+
+  [[languages.zh-cn.menu.main]]
+    name = "文章"
+    weight = 2
+    url = "posts/"
