@@ -49,9 +49,9 @@ enableGitInfo = true
     weight = 4
 
   [[menu.main]]
-    identifier = "rss"
-    pre = "<span data-feather='rss'></span>"
-    url = "/index.xml"
+    identifier = "csdn"
+    pre = "<span data-feather='book-open'></span>"
+    url = "https://blog.csdn.net/CSDNRomance?type=blog"
     weight = 5
 
 [markup]
