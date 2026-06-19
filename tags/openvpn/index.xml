@@ -1,39 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenVPN on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/tags/openvpn/</link><description>Recent content in OpenVPN on 卡布奇诺的技术笔记</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://kabuqin.github.io/cappuccino.github.io/tags/openvpn/index.xml" rel="self" type="application/rss+xml"/><item><title>Kali Linux 安装 OpenVPN 连接 HackTheBox</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/openvpn-htb-guide/</guid><description>&lt;p&gt;&lt;strong&gt;Kali Linux 作为渗透测试专用系统，默认软件源里就包含 OpenVPN，我们直接通过命令行安装即可。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="一安装openvpn"&gt;
- 一、安装openvpn
- &lt;a class="heading-link" href="#%e4%b8%80%e5%ae%89%e8%a3%85openvpn"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;链接到标题&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
+&lt;h2 id="一安装openvpn"&gt;一、安装openvpn&lt;/h2&gt;
 &lt;p&gt;1、打开 Kali 终端，先更新软件包索引，确保能获取到最新的安装包&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get update
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get update
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2、执行安装命令，等待程序自动完成安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install openvpn
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get install openvpn
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://kabuqin.github.io/cappuccino.github.io/images/82265d901bbcd7b2b1850d3365ef2015.jpeg" alt="在这里插入图片描述"&gt;&lt;/p&gt;
 &lt;p&gt;安装过程中如果出现确认提示，输入 y 并回车即可。&lt;/p&gt;
-&lt;h2 id="二获取-openvpn-配置文件"&gt;
- 二、获取 OpenVPN 配置文件
- &lt;a class="heading-link" href="#%e4%ba%8c%e8%8e%b7%e5%8f%96-openvpn-%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;链接到标题&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
+&lt;h2 id="二获取-openvpn-配置文件"&gt;二、获取 OpenVPN 配置文件&lt;/h2&gt;
 &lt;p&gt;1、点击viewconnection
 &lt;img src="https://i-blog.csdnimg.cn/direct/fa47b06edac44d679874dfdd5ed2925b.png" alt="在这里插入图片描述"&gt;
 2、我一般选择tcp443,点击download
 &lt;img src="https://i-blog.csdnimg.cn/direct/4e0450ec2166453d886da4e5db5d70fe.png" alt="在这里插入图片描述"&gt;&lt;/p&gt;
-&lt;h2 id="三连接openvpn"&gt;
- 三、连接OPENVPN
- &lt;a class="heading-link" href="#%e4%b8%89%e8%bf%9e%e6%8e%a5openvpn"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;链接到标题&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
+&lt;h2 id="三连接openvpn"&gt;三、连接OPENVPN&lt;/h2&gt;
 &lt;p&gt;1、输入openvpn &amp;ndash;config + vpn文件路径
 如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;openvpn --config starting_points_eu-starting-point-1-dhcp&lt;span class="se"&gt;\(&lt;/span&gt;1&lt;span class="se"&gt;\)&lt;/span&gt;.ovpn 
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openvpn --config starting_points_eu-starting-point-1-dhcp&lt;span style="color:#ae81ff"&gt;\(&lt;/span&gt;1&lt;span style="color:#ae81ff"&gt;\)&lt;/span&gt;.ovpn 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/a2d1bc487c3f49558ee89164508b70f3.png" alt="在这里插入图片描述"&gt;
 2、输入ip addr show tun0 验证连接是否生效&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ip addr show tun0
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr show tun0
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/3e7ac5e5470044fab27a2562d0d4e599.png" alt="在这里插入图片描述"&gt;&lt;/p&gt;</description></item></channel></rss>
