@@ -9,7 +9,7 @@ title = "卡布奇诺的技术笔记"
 enableGitInfo = true
 
 [params]
-  avatarURL = "/images/avatar.webp"
+  avatarURL = "https://kabuqin.github.io/cappuccino.github.io/images/avatar.jpg"
   avatarSize = "size-m"
   avatarAltText = "avatar"
   description = "关于 OSCP、内网渗透与生活的碎片"
