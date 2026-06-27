@@ -1,8 +1,8 @@
 ---
 title: "使用 Hugo + GitHub Pages 免费搭建技术博客"
-date: 2026-06-27
 draft: false
-tags: ["Hugo", "GitHub Pages", "博客搭建", "自动化部署"]
+type: post
+tags: ["CVE", "Windows", "RCE"]
 ---
 
 ```markdown
