@@ -3,6 +3,7 @@ title: "使用 Hugo + GitHub Pages 免费搭建技术博客"
 draft: false
 type: post
 tags: ["CVE", "Windows", "RCE"]
+date: 2026-06-27
 ---
 
 ```markdown
