@@ -165,4 +165,19 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;通过blog-poc.php 上传一个带有 xss代码（&lt;!-- raw HTML omitted --&gt;alert(123);&lt;!-- raw HTML omitted --&gt;）的xc0.gif 图片，当其他用户访问该文件的链接时，XSS代码将被执行。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href="http://localhost:8080//sites/default/files/pictures/2026-02/_0"&gt;localhost:8080//sites/default/files/pictures/2026-02/_0&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;a href="http://localhost:8080//sites/default/files/pictures/2026-02/_0"&gt;localhost:8080//sites/default/files/pictures/2026-02/_0&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Shopify Help Center AI 助手 Markdown 渲染缺陷导致 CSRF 与 RXSS 组合攻击</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/shopify-help-center-ai-%E5%8A%A9%E6%89%8B-markdown-%E6%B8%B2%E6%9F%93%E7%BC%BA%E9%99%B7%E5%AF%BC%E8%87%B4-csrf-%E4%B8%8E-rxss-%E7%BB%84%E5%90%88%E6%94%BB%E5%87%BB/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/shopify-help-center-ai-%E5%8A%A9%E6%89%8B-markdown-%E6%B8%B2%E6%9F%93%E7%BC%BA%E9%99%B7%E5%AF%BC%E8%87%B4-csrf-%E4%B8%8E-rxss-%E7%BB%84%E5%90%88%E6%94%BB%E5%87%BB/</guid><description>&lt;h2 id="shopify-help-center-ai-助手-markdown-渲染缺陷导致-csrf-与-rxss-组合攻击"&gt;Shopify Help Center AI 助手 Markdown 渲染缺陷导致 CSRF 与 RXSS 组合攻击&lt;/h2&gt;
+&lt;p&gt;该报告（#2509022）披露了 Shopify 帮助中心（&lt;code&gt;help.shopify.com&lt;/code&gt;）的 AI 聊天助手在处理 Markdown 图片渲染时存在缺陷，攻击者可利用跨站请求伪造（CSRF）在受害者会话中植入恶意 Markdown 图片链接，最终触发反射型 XSS（RXSS），进而泄露用户个人信息并劫持支持对话。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="漏洞概述"&gt;漏洞概述&lt;/h3&gt;
+&lt;p&gt;Shopify 帮助中心的 AI 聊天机器人在向用户展示问候语时，支持 Markdown 语法以丰富对话体验。在问候语的生成过程中，部分用户可控的输入会被直接反射到页面中。攻击者通过一个 CSRF 请求，可在受害者的会话中设置包含恶意 Markdown 图片的问候语。当受害者后续访问搜索页面时，该问候语被渲染，其中的 Markdown 图片链接因 &lt;code&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; 属性，需要用户使用鼠标中键点击才能触发 XSS（但攻击者可通过社会工程诱导用户执行该操作）。一旦触发，恶意脚本将窃取受害者个人信息，并尝试将攻击者邮箱添加为受害者已有支持对话的订阅者，从而获取对话内容或参与其中。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="根本原因"&gt;根本原因&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CSRF 漏洞&lt;/strong&gt;：&lt;code&gt;https://help.shopify.com/en/search&lt;/code&gt; 端点接受 &lt;code&gt;POST&lt;/code&gt; 请求，其中 &lt;code&gt;greeting&lt;/code&gt; 参数可被攻击者任意设置，且该请求缺乏有效的 CSRF 防护（如 anti-CSRF token 或同源校验），使得攻击者可以跨站诱导已登录用户发起该请求，将恶意问候语存入受害者会话。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Markdown 渲染缺陷&lt;/strong&gt;：问候语中的 Markdown 图片语法（&lt;code&gt;![alt](url)&lt;/code&gt;）会被解析并渲染为 HTML 链接（&lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; 标签），且该链接带有 &lt;code&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; 属性，用户点击时会在新标签页打开。攻击者将 &lt;code&gt;javascript:&lt;/code&gt; 伪协议作为图片 URL，构造出可执行代码的链接。虽然浏览器对 &lt;code&gt;javascript:&lt;/code&gt; 协议在新窗口中的执行有所限制（需要用户主动点击），但攻击者通过 &lt;code&gt;mouse wheel click&lt;/code&gt;（鼠标中键点击）即可绕过部分限制，触发 XSS。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;XSS 载荷的编码与混淆&lt;/strong&gt;：攻击者将完整的 JavaScript 载荷进行 Base64 编码，并放置在 &lt;code&gt;javascript:eval(atob('...'))&lt;/code&gt; 中，以规避简单过滤。&lt;/p&gt;</description></item></channel></rss>
