@@ -3,6 +3,7 @@ title: "Shopify Help Center AI 助手 Markdown 渲染缺陷导致 CSRF 与 RXSS 
 draft: false
 type: post
 tags: ["CVE", "XSS", "SHOPIFY"]
+date: 2026-06-23
 ---
 
 ## Shopify Help Center AI 助手 Markdown 渲染缺陷导致 CSRF 与 RXSS 组合攻击
