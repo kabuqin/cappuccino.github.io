@@ -1,107 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/tags/windows/</link><description>Recent content in Windows on 卡布奇诺的技术笔记</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://kabuqin.github.io/cappuccino.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Hugo + GitHub Pages 免费搭建技术博客</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84github%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link><pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84github%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid><description>&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 一、项目概述：为什么选择 Hugo + GitHub Pages？
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;对于技术博主来说，最理想的写作体验是“**用 Markdown 写作，Git 管理版本，一次推送自动上线**”。而 &lt;span style="font-weight:bold"&gt;**Hugo + GitHub Pages + GitHub Actions**&lt;/span&gt; 的组合，恰好能完美实现这个流程。
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这套方案的核心优势非常突出：
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| 优势 | 说明 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|------|------|
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**完全免费**&lt;/span&gt; | GitHub Pages 提供免费托管 + 全球 CDN 加速，无需购买服务器 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**极致性能**&lt;/span&gt; | Hugo 是Go语言写的静态生成器，构建速度毫秒级，生成纯HTML页面，访问极快 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**高安全性**&lt;/span&gt; | 没有数据库、没有服务端脚本，从根本上杜绝了SQL注入等常见漏洞 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**版本控制**&lt;/span&gt; | 所有文章和配置都用 Git 管理，历史变更清晰可查 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**写作纯粹**&lt;/span&gt; | 用 Markdown 写作，专注于内容本身 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;下面以开源项目 &lt;span style="font-style:italic"&gt;**&lt;/span&gt;[&lt;span style="color:#f92672"&gt;cappuccino.github.io&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://github.com/kabuqin/cappuccino.github.io&lt;/span&gt;)** 为参考，一步步带你搭建属于自己的技术博客。
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 二、技术选型
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;参考这个项目的技术栈：
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **框架**：[&lt;span style="color:#f92672"&gt;Hugo&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://gohugo.io/&lt;/span&gt;) —— 全球最快的静态网站生成器
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **主题**：[&lt;span style="color:#f92672"&gt;Gokarna&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://github.com/gokarna-theme/gokarna-hugo&lt;/span&gt;) —— 极简风格，专注于内容呈现
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **托管**：GitHub Pages —— 永久免费，自带SSL证书和CDN加速
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **自动化部署**：GitHub Actions —— 推送代码后自动构建并发布
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;你也可以选择其他主题，如 PaperMod、Ananke 等，Hugo 官方主题库有 2000+ 主题可供选择。
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 三、详细搭建步骤
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### 第一步：安装 Hugo
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold"&gt;**Mac（使用 Homebrew）**&lt;/span&gt;：
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;```bash
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install hugo
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Windows（使用 Scoop）&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>CVE-2026-20841：Windows 记事本高危远程代码执行漏洞</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</guid><description>&lt;p&gt;&lt;strong&gt;CVE-2026-20841 漏洞详细介绍：Windows 记事本高危远程代码执行漏洞&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一、漏洞概述&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CVE-2026-20841 是一个由微软在2026年2月“补丁星期二”更新中正式修复的高危远程代码执行（Remote Code Execution, RCE）漏洞，影响广泛使用的 Windows 记事本（Notepad）应用。该漏洞编号为 CVE-2026-20841，CVSS v3.1 基础评分为 &lt;strong&gt;8.8&lt;/strong&gt;，属于高危等级，微软将其严重性评定为“Important”（重要）。尽管目前尚未发现野外利用的案例，但其攻击路径简单、利用门槛低，一旦被恶意利用，可能导致用户系统被完全控制，构成严重安全威胁。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;二、漏洞成因与技术原理&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;该漏洞存在于 &lt;strong&gt;Microsoft Store 分发的新版 Windows 记事本&lt;/strong&gt;（也称“现代化记事本”）中，与旧版系统内置的纯文本记事本无关。新版记事本为支持现代文档格式，新增了对 Markdown（.md）文件的解析与预览功能，但在此过程中存在严重的安全校验缺失。&lt;/p&gt;
-&lt;p&gt;漏洞本质为 &lt;strong&gt;命令注入（Command Injection）&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;攻击者可构造一个看似正常的 &lt;code&gt;.md&lt;/code&gt; 文件，嵌入伪装链接（如“点击查看详情”），当用户使用新版记事本打开并点击该链接时，系统将自动执行恶意命令，实现远程代码执行。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;三、攻击流程与危害&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;构造恶意文件&lt;/strong&gt;：攻击者创建一个包含特制链接的 Markdown 文件，内容伪装为工作文档、技术笔记等，提升欺骗性。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;诱导用户打开&lt;/strong&gt;：通过邮件、社交软件、共享链接等方式传播文件，诱导用户使用新版记事本打开。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;点击触发执行&lt;/strong&gt;：用户点击链接瞬间，记事本解析并执行恶意命令，如：
-&lt;ul&gt;
-&lt;li&gt;下载并运行远控木马、勒索软件；&lt;/li&gt;
-&lt;li&gt;窃取本地敏感数据（密码、文档、浏览器记录）；&lt;/li&gt;
-&lt;li&gt;建立持久化后门，实现长期控制；&lt;/li&gt;
-&lt;li&gt;横向渗透内网，攻击其他设备。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;系统沦陷&lt;/strong&gt;：攻击者获得完整控制权，设备沦为“肉鸡”，可能被用于挖矿、发起DDoS攻击或进一步渗透企业网络。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;四、影响范围&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;✅ &lt;strong&gt;受影响版本&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;所有安装了 Microsoft Store 版新版记事本的 Windows 10 和 Windows 11 系统。&lt;/li&gt;
-&lt;li&gt;特别是在启用 Markdown 预览功能的设备上风险更高。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;❌ &lt;strong&gt;不受影响版本&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Windows 系统内置的旧版记事本（无 Markdown 解析功能）；&lt;/li&gt;
-&lt;li&gt;Windows Server 系统（默认不安装新版记事本，除非手动从商店下载）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;五、修复方案与防护建议&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;立即安装补丁&lt;/strong&gt;（最有效措施）：
-&lt;ul&gt;
-&lt;li&gt;个人用户：进入「设置 → Windows 更新」，检查并安装 &lt;strong&gt;2026年2月10日及以后的累积更新&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;同时打开 Microsoft Store，更新记事本应用至最新版本（可在“设置-关于”中查看版本号）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;企业与政企用户&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;通过 WSUS 或 Intune 批量推送补丁；&lt;/li&gt;
-&lt;li&gt;暂时禁用新版记事本的 Markdown 预览与链接跳转功能；&lt;/li&gt;
-&lt;li&gt;使用终端安全产品（如 Microsoft Defender for Endpoint）监控异常命令行行为。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;临时规避措施&lt;/strong&gt;（未打补丁前）：
-&lt;ul&gt;
-&lt;li&gt;关闭记事本的 Markdown 预览功能；&lt;/li&gt;
-&lt;li&gt;将 &lt;code&gt;.md&lt;/code&gt; 文件默认打开方式设为旧版记事本或安全的第三方编辑器（如 VSCode、Typora）；&lt;/li&gt;
-&lt;li&gt;不打开来源不明的 &lt;code&gt;.md&lt;/code&gt; 文件或压缩包中的文档。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;安全意识提升&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;警惕邮件、聊天工具中收到的“文档”类附件；&lt;/li&gt;
-&lt;li&gt;点击链接前，右键复制地址，检查是否包含异常协议或命令字符。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>常用工具及网站（武器库）</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99%E6%AD%A6%E5%99%A8%E5%BA%93/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99%E6%AD%A6%E5%99%A8%E5%BA%93/</guid><description>&lt;h1 id="常用工具及网站武器库"&gt;常用工具及网站（武器库）&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 卡布奇诺的技术笔记</title><link>https://kabuqin.github.io/cappuccino.github.io/tags/windows/</link><description>Recent content in Windows on 卡布奇诺的技术笔记</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 28 Jun 2026 08:23:54 +0800</lastBuildDate><atom:link href="https://kabuqin.github.io/cappuccino.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>常用工具及网站（武器库）</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99%E6%AD%A6%E5%99%A8%E5%BA%93/</link><pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99%E6%AD%A6%E5%99%A8%E5%BA%93/</guid><description>&lt;h1 id="常用工具及网站武器库"&gt;常用工具及网站（武器库）&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;其他收录平台或项目传送门:&lt;br&gt;
 开源扫描器收录地址：https://github.com/We5ter/Scanners-Box&lt;br&gt;
@@ -266,4 +163,107 @@ APP测试：https://github.com/Brucetg/App_Security&lt;br&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;windows提权在线辅助：http://bugs.hacking8.com/tiquan/&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;windows提权在线辅助：http://bugs.hacking8.com/tiquan/&lt;/p&gt;</description></item><item><title>使用 Hugo + GitHub Pages 免费搭建技术博客</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84github%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link><pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84github%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid><description>&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 一、项目概述：为什么选择 Hugo + GitHub Pages？
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;对于技术博主来说，最理想的写作体验是“**用 Markdown 写作，Git 管理版本，一次推送自动上线**”。而 &lt;span style="font-weight:bold"&gt;**Hugo + GitHub Pages + GitHub Actions**&lt;/span&gt; 的组合，恰好能完美实现这个流程。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;这套方案的核心优势非常突出：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| 优势 | 说明 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;|------|------|
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**完全免费**&lt;/span&gt; | GitHub Pages 提供免费托管 + 全球 CDN 加速，无需购买服务器 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**极致性能**&lt;/span&gt; | Hugo 是Go语言写的静态生成器，构建速度毫秒级，生成纯HTML页面，访问极快 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**高安全性**&lt;/span&gt; | 没有数据库、没有服务端脚本，从根本上杜绝了SQL注入等常见漏洞 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**版本控制**&lt;/span&gt; | 所有文章和配置都用 Git 管理，历史变更清晰可查 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;| &lt;span style="font-weight:bold"&gt;**写作纯粹**&lt;/span&gt; | 用 Markdown 写作，专注于内容本身 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;下面以开源项目 &lt;span style="font-style:italic"&gt;**&lt;/span&gt;[&lt;span style="color:#f92672"&gt;cappuccino.github.io&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://github.com/kabuqin/cappuccino.github.io&lt;/span&gt;)** 为参考，一步步带你搭建属于自己的技术博客。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 二、技术选型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;参考这个项目的技术栈：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **框架**：[&lt;span style="color:#f92672"&gt;Hugo&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://gohugo.io/&lt;/span&gt;) —— 全球最快的静态网站生成器
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **主题**：[&lt;span style="color:#f92672"&gt;Gokarna&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;https://github.com/gokarna-theme/gokarna-hugo&lt;/span&gt;) —— 极简风格，专注于内容呈现
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **托管**：GitHub Pages —— 永久免费，自带SSL证书和CDN加速
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; **自动化部署**：GitHub Actions —— 推送代码后自动构建并发布
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;你也可以选择其他主题，如 PaperMod、Ananke 等，Hugo 官方主题库有 2000+ 主题可供选择。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 三、详细搭建步骤
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### 第一步：安装 Hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold"&gt;**Mac（使用 Homebrew）**&lt;/span&gt;：
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;```bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Windows（使用 Scoop）&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>CVE-2026-20841：Windows 记事本高危远程代码执行漏洞</title><link>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</link><pubDate>Mon, 27 Apr 2026 00:00:00 +0000</pubDate><guid>https://kabuqin.github.io/cappuccino.github.io/posts/cve-2026-20841/</guid><description>&lt;p&gt;&lt;strong&gt;CVE-2026-20841 漏洞详细介绍：Windows 记事本高危远程代码执行漏洞&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、漏洞概述&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CVE-2026-20841 是一个由微软在2026年2月“补丁星期二”更新中正式修复的高危远程代码执行（Remote Code Execution, RCE）漏洞，影响广泛使用的 Windows 记事本（Notepad）应用。该漏洞编号为 CVE-2026-20841，CVSS v3.1 基础评分为 &lt;strong&gt;8.8&lt;/strong&gt;，属于高危等级，微软将其严重性评定为“Important”（重要）。尽管目前尚未发现野外利用的案例，但其攻击路径简单、利用门槛低，一旦被恶意利用，可能导致用户系统被完全控制，构成严重安全威胁。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二、漏洞成因与技术原理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该漏洞存在于 &lt;strong&gt;Microsoft Store 分发的新版 Windows 记事本&lt;/strong&gt;（也称“现代化记事本”）中，与旧版系统内置的纯文本记事本无关。新版记事本为支持现代文档格式，新增了对 Markdown（.md）文件的解析与预览功能，但在此过程中存在严重的安全校验缺失。&lt;/p&gt;
+&lt;p&gt;漏洞本质为 &lt;strong&gt;命令注入（Command Injection）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;攻击者可构造一个看似正常的 &lt;code&gt;.md&lt;/code&gt; 文件，嵌入伪装链接（如“点击查看详情”），当用户使用新版记事本打开并点击该链接时，系统将自动执行恶意命令，实现远程代码执行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三、攻击流程与危害&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;构造恶意文件&lt;/strong&gt;：攻击者创建一个包含特制链接的 Markdown 文件，内容伪装为工作文档、技术笔记等，提升欺骗性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;诱导用户打开&lt;/strong&gt;：通过邮件、社交软件、共享链接等方式传播文件，诱导用户使用新版记事本打开。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点击触发执行&lt;/strong&gt;：用户点击链接瞬间，记事本解析并执行恶意命令，如：
+&lt;ul&gt;
+&lt;li&gt;下载并运行远控木马、勒索软件；&lt;/li&gt;
+&lt;li&gt;窃取本地敏感数据（密码、文档、浏览器记录）；&lt;/li&gt;
+&lt;li&gt;建立持久化后门，实现长期控制；&lt;/li&gt;
+&lt;li&gt;横向渗透内网，攻击其他设备。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系统沦陷&lt;/strong&gt;：攻击者获得完整控制权，设备沦为“肉鸡”，可能被用于挖矿、发起DDoS攻击或进一步渗透企业网络。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;四、影响范围&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;strong&gt;受影响版本&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;所有安装了 Microsoft Store 版新版记事本的 Windows 10 和 Windows 11 系统。&lt;/li&gt;
+&lt;li&gt;特别是在启用 Markdown 预览功能的设备上风险更高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;❌ &lt;strong&gt;不受影响版本&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Windows 系统内置的旧版记事本（无 Markdown 解析功能）；&lt;/li&gt;
+&lt;li&gt;Windows Server 系统（默认不安装新版记事本，除非手动从商店下载）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;五、修复方案与防护建议&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;立即安装补丁&lt;/strong&gt;（最有效措施）：
+&lt;ul&gt;
+&lt;li&gt;个人用户：进入「设置 → Windows 更新」，检查并安装 &lt;strong&gt;2026年2月10日及以后的累积更新&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;同时打开 Microsoft Store，更新记事本应用至最新版本（可在“设置-关于”中查看版本号）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;企业与政企用户&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;通过 WSUS 或 Intune 批量推送补丁；&lt;/li&gt;
+&lt;li&gt;暂时禁用新版记事本的 Markdown 预览与链接跳转功能；&lt;/li&gt;
+&lt;li&gt;使用终端安全产品（如 Microsoft Defender for Endpoint）监控异常命令行行为。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;临时规避措施&lt;/strong&gt;（未打补丁前）：
+&lt;ul&gt;
+&lt;li&gt;关闭记事本的 Markdown 预览功能；&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;.md&lt;/code&gt; 文件默认打开方式设为旧版记事本或安全的第三方编辑器（如 VSCode、Typora）；&lt;/li&gt;
+&lt;li&gt;不打开来源不明的 &lt;code&gt;.md&lt;/code&gt; 文件或压缩包中的文档。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全意识提升&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;警惕邮件、聊天工具中收到的“文档”类附件；&lt;/li&gt;
+&lt;li&gt;点击链接前，右键复制地址，检查是否包含异常协议或命令字符。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
